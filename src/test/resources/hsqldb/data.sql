@@ -1,0 +1,1 @@
+insert into demo values(1,'Yash','Yash');

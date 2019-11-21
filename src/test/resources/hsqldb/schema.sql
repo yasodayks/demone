@@ -1,0 +1,5 @@
+CREATE TABLE demo (
+  id INT PRIMARY KEY,
+  demoname VARCHAR(250) NOT NULL,
+  demodesc VARCHAR(250) NOT NULL
+);
