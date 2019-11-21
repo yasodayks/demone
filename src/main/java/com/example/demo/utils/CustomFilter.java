@@ -30,7 +30,7 @@ public class CustomFilter extends GenericFilterBean{
 		}else {
 			String authrorizationHeader=req.getHeader("authorization");	
 			   if(Objects.isNull(authrorizationHeader)) {
-				   
+				   log.error("401 unauthorized");
 			   }else if(Objects.nonNull(authrorizationHeader) || authrorizationHeader.startsWith(SecurityUtils.TOKEN_PREFIX)) {
 					
 					boolean flag=JwtTokenUtil.verifyJwtToken(authrorizationHeader);
