@@ -30,4 +30,9 @@ public class DemoServiceImpl implements DemoService{
 		demoRepository.setDemo(desc, name,id);
 	}
 
+	@Override
+	public void deleteDemo(int id) {
+		demoRepository.deleteById(id);		
+	}
+
 }

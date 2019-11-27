@@ -9,4 +9,5 @@ public interface DemoService {
 	public Page<Demo> getAllDemos(int page,int size);
 	public void saveDemo(Demo demo);
 	public void updateDemo(String desc, String name, int id);
+	public void deleteDemo(int id);
 }

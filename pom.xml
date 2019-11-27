@@ -124,6 +124,17 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <configuration>
+                <archive>
+                    <manifestEntries>
+                        <splashscreen-image>demo</splashscreen-image>
+                    </manifestEntries>
+                </archive>
+            </configuration>
+        </plugin>
 		</plugins>
 	</build>
 

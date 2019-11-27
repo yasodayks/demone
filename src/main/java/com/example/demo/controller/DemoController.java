@@ -1,9 +1,10 @@
 package com.example.demo.controller;
 
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,8 +48,8 @@ public class DemoController {
         @ApiResponse(code = 400, message = "Bad Request"),
         @ApiResponse(code = 404, message = "Resource does not exists")
     })
-	Page<Demo> getDemos(@QueryParam("page") int page, 
-			@QueryParam("size") int size) {		
+	Page<Demo> getDemos(@PathParam("page") int page, 
+			@PathParam("size") int size) {		
 		return demoService.getAllDemos(page,size);		
 	}
 	
@@ -74,6 +75,17 @@ public class DemoController {
 	})
 	void updateDemo(@PathVariable int id, @RequestBody Demo demo ) {
 		demoService.updateDemo(demo.getDemodesc(), demo.getDemoname(),id);
+	}
+	
+	@DeleteMapping(path ="/{id}")
+	@ApiOperation(value = "Deletes demo record in database",notes = "Deletes demo record in database")
+	@ApiResponses({
+		@ApiResponse(code = 200, message = "Success"),
+		@ApiResponse(code = 400, message = "Bad Request"),
+		@ApiResponse(code = 404, message = "Resource does not exists")
+	})
+	void deleteDemo(@PathVariable int id ) {
+		demoService.deleteDemo(id);
 	}
 
 }
