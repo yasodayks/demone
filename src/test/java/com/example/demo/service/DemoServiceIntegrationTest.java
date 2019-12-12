@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import org.junit.Test;
@@ -10,7 +11,7 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.example.demo.model.Demo;
@@ -35,18 +36,14 @@ public class DemoServiceIntegrationTest {
 	
 	
 	@MockBean
-	private DemoRepository demoRepository;
+	private DemoRepository demoRepository;	
 	
-	public void setUp() {
-	
-		Page<Demo> demoss = Mockito.mock(Page.class);		
-		Mockito.when(demoRepository.findAll(org.mockito.Matchers.isA(Pageable.class))).thenReturn(demoss);
-	}
 	
 	@Test
-	public void whenvalidDemoThenDemoShouldBeFound() {
-		
-		Page<Demo> demos= demoService.getAllDemos(0, 10);
-		assertNull(demos);	
+	public void whenvalidDemoThenDemoShouldBeFound() {		
+		Page<Demo> value = Mockito.mock(Page.class);
+		Mockito.when(demoRepository.findAll(PageRequest.of(0, 10))).thenReturn(value);
+		Page<Demo> demos=demoService.getAllDemos(PageRequest.of(0, 10));
+		assertNotNull(demos);			
 	}
 }

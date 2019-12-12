@@ -10,17 +10,17 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.GenericFilterBean;
-
-import com.example.demo.error.ErrorCodes;
-import com.example.demo.error.ExceptionResponse;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Component
+@Order(SecurityProperties.BASIC_AUTH_ORDER)
 public class CustomFilter extends GenericFilterBean{	
 
 	@Override
@@ -50,7 +50,7 @@ public class CustomFilter extends GenericFilterBean{
 				
 			}
 		}
-	
+		//chain.doFilter(request, response);
 	}
 	
 		

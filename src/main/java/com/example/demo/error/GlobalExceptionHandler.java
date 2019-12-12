@@ -30,6 +30,7 @@ public class GlobalExceptionHandler {
 		return ResponseEntity.status(HttpStatus.FORBIDDEN).body(exceptionResponse);
 	}
 	
+	@ExceptionHandler(InternalServerException.class)
 	public ResponseEntity<ExceptionResponse> handleInternalServerError(InternalServerException ise){
 		ExceptionResponse exceptionResponse = new ExceptionResponse(ise.getMessage(), ErrorCodes.UNKNOWN_ERROR);
 		log.info("Exception is: InternalServerException");

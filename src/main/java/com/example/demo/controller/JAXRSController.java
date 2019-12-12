@@ -1,10 +1,5 @@
 package com.example.demo.controller;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +14,7 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 @RestController
-@RequestMapping("/demone")
+//@RequestMapping("/demone")
 public class JAXRSController {
 
 	@Autowired
@@ -28,7 +23,7 @@ public class JAXRSController {
 	/*
 	 * @POST
 	 * 
-	 * @Path("/saveJaxRs")
+	 * @Path("/saveJaxRs")//
 	 * 
 	 * @Consumes("application/json")
 	 * 
