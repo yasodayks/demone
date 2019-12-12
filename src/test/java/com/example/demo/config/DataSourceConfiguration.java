@@ -2,16 +2,23 @@ package com.example.demo.config;
 
 import javax.sql.DataSource;
 
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.autoconfigure.web.server.ManagementServerProperties;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
+import com.example.demo.services.DemoService;
+import com.example.demo.services.DemoServiceImpl;
+
 @Configuration
 @EnableAutoConfiguration
-public class DataSourceConfiguration {
+public class DataSourceConfiguration {	
 	
 	@Bean
 	public DataSource dataSource() {
@@ -25,4 +32,15 @@ public class DataSourceConfiguration {
 			.build();
 		return db;
 	}
+	
+	//@Bean
+	//public WebSecurityConfig webSecurityConfig() {
+		//return Mockito.mock(WebSecurityConfig.class);
+	//}
+	
+	@Bean
+	public DemoService demoService() {
+		return new DemoServiceImpl();
+	}	
+	
 }
