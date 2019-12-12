@@ -4,6 +4,7 @@ import javax.ws.rs.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,8 +27,8 @@ import io.swagger.annotations.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("/demone")
-@Api
+//@RequestMapping("/demone")
+@Api(value="/demo",produces ="application/json")
 @Slf4j
 public class DemoController {
 	
@@ -49,8 +50,9 @@ public class DemoController {
         @ApiResponse(code = 404, message = "Resource does not exists")
     })
 	Page<Demo> getDemos(@PathParam("page") int page, 
-			@PathParam("size") int size) {		
-		return demoService.getAllDemos(page,size);		
+			@PathParam("size") int size) {	
+		PageRequest pageRequest = PageRequest.of(page, size);
+		return demoService.getAllDemos(pageRequest);		
 	}
 	
 	@PostMapping(path="/saveDemo", produces = "application/json", consumes = "application/json")	
